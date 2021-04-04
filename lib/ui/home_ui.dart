@@ -36,7 +36,7 @@ class _HomeUIState extends State<HomeUI> {
       });
     }
 
-    //_isUserAdmin();
+    _isUserAdmin();
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +45,7 @@ class _HomeUIState extends State<HomeUI> {
           IconButton(
               icon: Icon(Icons.settings),
               onPressed: () {
-                //Navigator.of(context).pushNamed('/settings');
+                Navigator.of(context).pushNamed('/settings');
               })
         ],
       ),
@@ -78,5 +78,5 @@ class _HomeUIState extends State<HomeUI> {
     );
   }
 
-  //_isUserAdmin() async {}
+  _isUserAdmin() async {}
 }

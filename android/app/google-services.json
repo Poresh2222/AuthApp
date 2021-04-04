@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "780285758829",
+    "project_id": "waterproject-861c5",
+    "storage_bucket": "waterproject-861c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780285758829:android:cebaf77af8df549f041e64",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780285758829-f5ft63olg3eopghb06sl35q9mrl0370a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC30Zw8KAeKIIpD5P_rrW00dCkD9EQbIOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780285758829-f5ft63olg3eopghb06sl35q9mrl0370a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780285758829:android:ae93aec40973849d041e64",
+        "android_client_info": {
+          "package_name": "com.example.waterproject_v3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780285758829-f5ft63olg3eopghb06sl35q9mrl0370a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC30Zw8KAeKIIpD5P_rrW00dCkD9EQbIOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780285758829-f5ft63olg3eopghb06sl35q9mrl0370a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

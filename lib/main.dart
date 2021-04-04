@@ -8,6 +8,7 @@ import 'package:waterproject_v3/services/services.dart';
 import 'package:waterproject_v3/constants/constants.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<ThemeProvider>(
