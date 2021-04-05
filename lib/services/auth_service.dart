@@ -8,6 +8,10 @@ import 'package:simple_gravatar/simple_gravatar.dart';
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //FireBaseAuth2020
+  //Future<User> get getUser => ;
+
+  //Stream<User> get user => ;
 
   Future<bool> signInWithEmailAndPassword(String email, String password) async {
     try {
