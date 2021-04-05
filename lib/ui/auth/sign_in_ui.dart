@@ -6,6 +6,8 @@ import 'package:waterproject_v3/ui/components/form_input_field_with_icon.dart';
 import 'package:waterproject_v3/ui/components/label_button.dart';
 import 'package:waterproject_v3/ui/components/primary_button.dart';
 
+import 'package:waterproject_v3/services/services.dart';
+
 class SignInUI extends StatefulWidget {
   _SignInUIState createState() => _SignInUIState();
 }
@@ -68,7 +70,31 @@ class _SignInUIState extends State<SignInUI> {
                     FormVerticalSpace(),
                     PrimaryButton(
                       labelText: "Sign In",
-                      onPressed: null,
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          setState(() {
+                            _loading = true;
+                          });
+                          AuthService _auth = AuthService();
+                          bool status = await _auth
+                              .signInWithEmailAndPassword(
+                                  _email.text, _password.text)
+                              .then((status) {
+                            setState(() {
+                              _loading = false;
+                            });
+                            return status;
+                          });
+                          if (!status) {
+                            _scaffoldKey.currentState.showSnackBar(SnackBar(
+                              content: Text('incorrect'),
+                            ));
+                            print("incorrect");
+                          } else {
+                            print("suppper");
+                          }
+                        }
+                      },
                     ),
                     FormVerticalSpace(),
                     LabelButton(
