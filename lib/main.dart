@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:waterproject_v3/ui/auth/auth.dart';
 
 import 'package:waterproject_v3/ui/ui.dart';
 import 'package:waterproject_v3/services/services.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         themeMode:
             themeProviderRef.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
         home:
-            HomeUI(), //(userSnapshot?.data?.uid != null) ? HomeUI() : SignInUI(),
+            SignInUI(), //(userSnapshot?.data?.uid != null) ? HomeUI() : SignInUI(),
       );
     });
   }
