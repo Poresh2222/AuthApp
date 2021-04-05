@@ -48,4 +48,8 @@ class AuthService extends ChangeNotifier {
       return false;
     }
   }
+
+  Future<void> signOut() {
+    return _auth.signOut();
+  }
 }

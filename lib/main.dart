@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         themeMode:
             themeProviderRef.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
         home:
-            SignInUI(), //(userSnapshot?.data?.uid != null) ? HomeUI() : SignInUI(),
+            SettingsUI(), //(userSnapshot?.data?.uid != null) ? HomeUI() : SignInUI(),
       );
     });
   }
