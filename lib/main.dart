@@ -1,16 +1,19 @@
 //import 'dart:js';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+//import 'package:firebase_analytics/firebase_analytics.dart';
+//import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:waterproject_v3/ui/auth/auth.dart';
-//import 'package:waterproject_v3/ui/auth/auth.dart';
-
 import 'package:waterproject_v3/ui/ui.dart';
 import 'package:waterproject_v3/services/services.dart';
 import 'package:waterproject_v3/constants/constants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<ThemeProvider>(
@@ -30,35 +33,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(
-          builder: (_, themeProviderRef, __) {
-            return AuthWidgetBuilder(
-              builder: (BuildContext context,
-                  AsyncSnapshot<FirebaseUser> userSnapshot) {
-                return MaterialApp(
-                  locale: languageProviderRef.getLocale, 
-                  localizationsDelegates: [
-                    const AppLocalizationsDelegate(), 
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                  ],
-                  supportedLocales: AppLocalizations.languages.keys
-                      .toList(), 
-                  navigatorObservers: [
-                    FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
-                  ],
-                  debugShowCheckedModeBanner: false,
-                  routes: Routes.routes,
-                  theme: AppThemes.lightTheme,
-                  darkTheme: AppThemes.darkTheme,
-                  themeMode: themeProviderRef.isDarkModeOn
-                      ? ThemeMode.dark
-                      : ThemeMode.light,
-                  home:
-                      (userSnapshot?.data?.uid != null) ? HomeUI() : SignInUI(),
-                );
-              },
+      builder: (_, themeProviderRef, __) {
+        return AuthWidgetBuilder(
+          builder: (BuildContext context, AsyncSnapshot<User> userSnapshot) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              routes: Routes.routes,
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              themeMode: themeProviderRef.isDarkModeOn
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+              home: (userSnapshot?.data?.uid != null) ? HomeUI() : SignInUI(),
             );
           },
         );
       },
+    );
+  }
 }

@@ -30,7 +30,7 @@ class _UpdateProfileUIState extends State<UpdateProfileUI> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      _key: _scaffoldKey,
+      //_key: _scaffoldKey,
       appBar: AppBar(title: Text('Update Profile')),
       body: LoadingScreen(
         child: updateProfileForm(context),
