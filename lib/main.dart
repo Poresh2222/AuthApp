@@ -1,19 +1,18 @@
-//import 'dart:js';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //import 'package:firebase_analytics/firebase_analytics.dart';
 //import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:waterproject_v3/models/user_model.dart';
 import 'package:waterproject_v3/ui/auth/auth.dart';
 import 'package:waterproject_v3/ui/ui.dart';
 import 'package:waterproject_v3/services/services.dart';
 import 'package:waterproject_v3/constants/constants.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<ThemeProvider>(

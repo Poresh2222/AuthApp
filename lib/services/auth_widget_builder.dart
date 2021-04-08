@@ -11,17 +11,17 @@ class AuthWidgetBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context, listen: false);
     return StreamBuilder<User>(
-        stream: authService.user,
+        stream: authService.userStatus,
         builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
           final User user = snapshot.data;
           if (user != null) {
-            return MultiProvider(
+            MultiProvider(
               providers: [
                 Provider<User>.value(value: user),
-                StreamProvider<User>.value(
-                    value: AuthService().streamFirestoreUser(user))
+                StreamProvider<UserModel>.value(
+                    value: AuthService().streamFirestoreUser(user),
+                    initialData: null)
               ],
-              child: builder(context, snapshot),
             );
           }
           return builder(context, snapshot);

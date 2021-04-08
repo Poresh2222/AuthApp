@@ -85,14 +85,15 @@ class _SignInUIState extends State<SignInUI> {
                             });
                             return status;
                           });
-                          if (!status) {
-                            _scaffoldKey.currentState.showSnackBar(SnackBar(
-                              content: Text('incorrect'),
-                            ));
-                            print("incorrect");
-                          } else {
-                            print("suppper");
-                          }
+                          //if (status == false) {
+                          //  //
+                          //  _scaffoldKey.currentState.showSnackBar(SnackBar(
+                          //    content: Text('incorrect'),
+                          //  ));
+                          //  print("incorrect");
+                          //} else {
+                          //  print("suppper");
+                          //}
                         }
                       },
                     ),

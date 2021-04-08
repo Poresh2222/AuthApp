@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waterproject_v3/ui/ui.dart';
-//import 'package:waterproject_v3/ui/auth/auth.dart';
+import 'package:waterproject_v3/ui/auth/auth.dart';
 
 class Routes {
   Routes._();
@@ -12,10 +12,11 @@ class Routes {
   static const String updateProfile = '/update-profile';
 
   static final routes = <String, WidgetBuilder>{
-    //  signin: (BuildContext context) => SignInUI(),
-    //  signup: (BuildContext context) => SignUpUI(),
-    //  settings: (BuildContext context) => SettingsUI(),
-    //  resetPassword: (BuildContext context) => ResetPasswordUI(),
-    //  updateProfile: (BuildContext context) => UpdateProfileUI(),
+    home: (BuildContext context) => HomeUI(),
+    signin: (BuildContext context) => SignInUI(),
+    //signup: (BuildContext context) => SignUpUI(),
+    settings: (BuildContext context) => SettingsUI(),
+    //resetPassword: (BuildContext context) => ResetPasswordUI(),
+    //updateProfile: (BuildContext context) => UpdateProfileUI(),
   };
 }

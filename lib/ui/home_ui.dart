@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:waterproject_v3/models/user_model.dart';
 import 'package:waterproject_v3/ui/components/components.dart';
+import 'package:waterproject_v3/services/services.dart';
 
 class HomeUI extends StatefulWidget {
   @override
@@ -11,10 +13,10 @@ class HomeUI extends StatefulWidget {
 
 class _HomeUIState extends State<HomeUI> {
   bool _loading = true;
-  String _uid = '';
-  String _name = '';
-  String _email = '';
-  String _admin = '';
+  String _uid = '12345';
+  String _name = 'test';
+  String _email = 'test';
+  String _admin = 'test';
   @override
   void initState() {
     super.initState();
@@ -26,17 +28,17 @@ class _HomeUIState extends State<HomeUI> {
   }
 
   Widget build(BuildContext context) {
-    final UserModel user = Provider.of<UserModel>(context);
-    if (user != null) {
-      setState(() {
-        _loading = false;
-        _uid = user.uid;
-        _name = user.name;
-        _email = user.email;
-      });
-    }
+    //var user = Provider.of<UserModel>(context);
+    //if (user != null) {
+    //  setState(() {
+    //    _loading = false;
+    //    _uid = user.uid;
+    //    _name = user.name;
+    //    _email = user.email;
+    //  });
+    //}
 
-    _isUserAdmin();
+    //_isUserAdmin();
 
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +56,7 @@ class _HomeUIState extends State<HomeUI> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 120),
-              Avatar(user),
+              //Avatar(user),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,5 +80,5 @@ class _HomeUIState extends State<HomeUI> {
     );
   }
 
-  _isUserAdmin() async {}
+  //_isUserAdmin() async {}
 }
