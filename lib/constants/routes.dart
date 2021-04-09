@@ -14,7 +14,7 @@ class Routes {
   static final routes = <String, WidgetBuilder>{
     home: (BuildContext context) => HomeUI(),
     signin: (BuildContext context) => SignInUI(),
-    //signup: (BuildContext context) => SignUpUI(),
+    signup: (BuildContext context) => SignUpUI(),
     settings: (BuildContext context) => SettingsUI(),
     //resetPassword: (BuildContext context) => ResetPasswordUI(),
     //updateProfile: (BuildContext context) => UpdateProfileUI(),

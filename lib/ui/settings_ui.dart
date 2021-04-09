@@ -57,6 +57,7 @@ class SettingsUI extends StatelessWidget {
               onPressed: () {
                 AuthService _auth = AuthService();
                 _auth.signOut();
+                Navigator.of(context).pushNamed('/signin');
                 //Navigator.pushReplacementNamed(context, '/signin');
               },
               child: Text("Sign Out"),

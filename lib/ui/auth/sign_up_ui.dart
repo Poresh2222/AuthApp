@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:waterproject_v3/ui/components/components.dart';
-import 'package:waterproject_v3/ui/components/form_input_field_with_icon.dart';
-import 'package:waterproject_v3/ui/components/label_button.dart';
-import 'package:waterproject_v3/ui/components/primary_button.dart';
-
 import 'package:waterproject_v3/services/services.dart';
 
-class SignInUI extends StatefulWidget {
-  _SignInUIState createState() => _SignInUIState();
+class SignUpUI extends StatefulWidget {
+  _SignUpUIState createState() => _SignUpUIState();
 }
 
-class _SignInUIState extends State<SignInUI> {
+class _SignUpUIState extends State<SignUpUI> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _name = new TextEditingController();
   final TextEditingController _email = new TextEditingController();
   final TextEditingController _password = new TextEditingController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _loading = false;
 
   @override
   void initState() {
@@ -26,12 +21,15 @@ class _SignInUIState extends State<SignInUI> {
 
   @override
   void dispose() {
+    _name.dispose();
     _email.dispose();
     _password.dispose();
     super.dispose();
   }
 
   Widget build(BuildContext context) {
+    bool _loading = false;
+
     return Scaffold(
       key: _scaffoldKey,
       body: LoadingScreen(
@@ -48,10 +46,19 @@ class _SignInUIState extends State<SignInUI> {
                     LogoGraphicHeader(),
                     SizedBox(height: 48.0),
                     FormInputFieldWithIcon(
+                      controller: _name,
+                      iconPrefix: Icons.person,
+                      labelText: 'Name',
+                      //validator: Validator(labels).name,
+                      onChanged: (value) => null,
+                      onSaved: (value) => _name.text = value,
+                    ),
+                    FormVerticalSpace(),
+                    FormInputFieldWithIcon(
                       controller: _email,
                       iconPrefix: Icons.email,
-                      labelText: "email",
-                      //validator: Validator,
+                      labelText: 'Email',
+                      //validator: Validator(labels).email,
                       keyboardType: TextInputType.emailAddress,
                       onChanged: (value) => null,
                       onSaved: (value) => _email.text = value,
@@ -60,53 +67,39 @@ class _SignInUIState extends State<SignInUI> {
                     FormInputFieldWithIcon(
                       controller: _password,
                       iconPrefix: Icons.lock,
-                      labelText: "password",
-                      //validator: Validator,
+                      labelText: 'Password',
+                      //validator: Validator(labels).password,
                       obscureText: true,
+                      maxLines: 1,
                       onChanged: (value) => null,
                       onSaved: (value) => _password.text = value,
-                      maxLines: 1,
                     ),
                     FormVerticalSpace(),
                     PrimaryButton(
-                      labelText: "Sign In",
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          setState(() {
-                            _loading = true;
-                          });
-                          AuthService _auth = AuthService();
-                          bool status = await _auth
-                              .signInWithEmailAndPassword(
-                                  _email.text, _password.text)
-                              .then((status) {
-                            setState(() {
-                              _loading = false;
-                            });
-                            return status;
-                          });
-                          //if (status == false) {
-                          //  //
-                          //  _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          //    content: Text('incorrect'),
-                          //  ));
-                          //  print("incorrect");
-                          //} else {
-                          //  print("suppper");
-                          //}
-                        }
-                      },
-                    ),
+                        labelText: 'Sign Up',
+                        onPressed: () async {
+                          if (_formKey.currentState.validate()) {
+                            AuthService _auth = AuthService();
+                            bool _isRegisterSucccess =
+                                await _auth.createUserWithEmailAndPassword(
+                                    _email.text, _password.text);
+
+                            if (_isRegisterSucccess == false) {
+                              _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                content: Text('ERROR'),
+                              ));
+                            }
+                            if (_isRegisterSucccess == true) {
+                              Navigator.of(context).pushNamed('/home');
+                            }
+                          }
+                        }),
                     FormVerticalSpace(),
                     LabelButton(
-                      labelText: "resetPass",
-                      onPressed: null,
-                    ),
-                    LabelButton(
-                      labelText: "Sign Up",
+                      labelText: 'Sing In',
                       onPressed: () =>
-                          Navigator.pushReplacementNamed(context, '/signup'),
-                    )
+                          Navigator.pushReplacementNamed(context, '/'),
+                    ),
                   ],
                 ),
               ),

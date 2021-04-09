@@ -12,11 +12,7 @@ class HomeUI extends StatefulWidget {
 }
 
 class _HomeUIState extends State<HomeUI> {
-  bool _loading = true;
-  String _uid = '12345';
-  String _name = 'test';
-  String _email = 'test';
-  String _admin = 'test';
+  bool _loading = false;
   @override
   void initState() {
     super.initState();
@@ -28,18 +24,6 @@ class _HomeUIState extends State<HomeUI> {
   }
 
   Widget build(BuildContext context) {
-    //var user = Provider.of<UserModel>(context);
-    //if (user != null) {
-    //  setState(() {
-    //    _loading = false;
-    //    _uid = user.uid;
-    //    _name = user.name;
-    //    _email = user.email;
-    //  });
-    //}
-
-    //_isUserAdmin();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('WaterLife'),
@@ -57,20 +41,6 @@ class _HomeUIState extends State<HomeUI> {
             children: <Widget>[
               SizedBox(height: 120),
               //Avatar(user),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  FormVerticalSpace(),
-                  Text('uid : ' + _uid, style: TextStyle(fontSize: 16)),
-                  FormVerticalSpace(),
-                  Text('name : ' + _name, style: TextStyle(fontSize: 16)),
-                  FormVerticalSpace(),
-                  Text('email : ' + _email, style: TextStyle(fontSize: 16)),
-                  FormVerticalSpace(),
-                  Text('admin : ' + _admin, style: TextStyle(fontSize: 16)),
-                ],
-              )
             ],
           ),
         ),

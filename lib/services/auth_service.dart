@@ -19,7 +19,7 @@ class AuthService extends ChangeNotifier {
   }
 
   Future<bool> createUserWithEmailAndPassword(
-      String name, String email, String password) async {
+      String email, String password) async {
     try {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
@@ -36,7 +36,7 @@ class AuthService extends ChangeNotifier {
         UserModel _newUser = UserModel(
             uid: result.user.uid,
             email: result.user.email,
-            name: name,
+            name: '',
             photoUrl: gravatarUrl);
         //_updateUserFirestore(_newUser, result.user);
       });
